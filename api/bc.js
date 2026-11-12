@@ -1,14 +1,15 @@
 // BlackClover backend: one Vercel function, data in Upstash Redis (Vercel KV).
 // Env: KV_REST_API_URL + KV_REST_API_TOKEN (set by the Vercel Redis integration), ADMIN_PASSWORD (you choose it).
-// Optional env: CHECKPOINT_STEPS (default 3), CHECKPOINT_WAIT seconds per step (default 12), KEY_HOURS (default 24).
+// Optional env: CHECKPOINT_WAIT seconds per checkpoint (default 12).
+// Key tiers live in TIERS below. Keep the ids and checkpoint counts in step with CONFIG.tiers in index.html.
 const crypto = require("crypto");
 
 const U = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const T = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 const ADMIN = process.env.ADMIN_PASSWORD || "";
-const STEPS = Math.max(1, Math.min(8, +process.env.CHECKPOINT_STEPS || 3));
 const WAIT = Math.max(3, Math.min(120, +process.env.CHECKPOINT_WAIT || 12));
-const KEY_HOURS = Math.max(1, Math.min(720, +process.env.KEY_HOURS || 24));
+// id -> key lifetime in hours (h) and number of checkpoints (n)
+const TIERS = { "3": { h: 3, n: 1 }, "6": { h: 6, n: 1 }, "12": { h: 12, n: 2 }, "24": { h: 24, n: 3 }, "96": { h: 96, n: 5 } };
 const RESERVED = ["admin", "administrator", "blackclover", "staff", "mod", "moderator", "support", "system", "owner", "dev"];
 
 const J = s => { try { return JSON.parse(s); } catch (e) { return null; } };
@@ -254,45 +255,60 @@ module.exports = async (req, res) => {
     if (a.startsWith("cp_") && post) {
       const cid = clean(b.cid, 64);
       if (!cid) return fail(res, 400, "bad_request");
-      const view = async (st, extra) => {
+      const view = (st, extra) => {
+        const tier = TIERS[st.tier];
         const left = st.t ? Math.max(0, Math.ceil((st.t + WAIT * 1000 - Date.now()) / 1000)) : WAIT;
-        return { total: STEPS, wait: WAIT, step: st.step, opened: !!st.t, left, ...extra };
+        return { tier: tier ? st.tier : null, total: tier ? tier.n : 0, wait: WAIT, step: st.step || 0, opened: !!st.t, left, ...extra };
       };
-      const done = async () => {
-        const k = await R("GET", "bc:ck:" + cid);
-        if (!k) return null;
-        const rec = J(await R("GET", "bc:key:" + k));
-        return rec ? { key: k, exp: rec.exp } : null;
-      };
-      const have = await done();
-      if (have) return res.json(await view({ step: STEPS, t: 0 }, have));
-      const st = J(await R("GET", "bc:cp:" + cid)) || { step: 0, t: 0 };
+      const have = await R("GET", "bc:ck:" + cid);
+      if (have) {
+        const rec = J(await R("GET", "bc:key:" + have));
+        if (rec && TIERS[rec.tier]) return res.json(view({ tier: rec.tier, step: TIERS[rec.tier].n, t: 0 }, { key: have, exp: rec.exp }));
+      }
+      const st = J(await R("GET", "bc:cp:" + cid)) || { tier: null, step: 0, t: 0 };
 
-      if (a === "cp_state") return res.json(await view(st));
+      if (a === "cp_state") return res.json(view(st));
+
+      if (a === "cp_pick") {
+        if (!(await limit("pick:" + ip, 60, 600))) return fail(res, 429, "slow_down");
+        const id = String(b.tier || "");
+        if (!TIERS[id]) return fail(res, 400, "bad_tier");
+        const ns = { tier: id, step: 0, t: 0 };
+        await R("SET", "bc:cp:" + cid, JSON.stringify(ns), "EX", 3600);
+        return res.json(view(ns));
+      }
+
+      if (a === "cp_reset") {
+        await R("DEL", "bc:cp:" + cid);
+        return res.json(view({ tier: null, step: 0, t: 0 }));
+      }
+
+      const tier = TIERS[st.tier];
+      if (!tier) return fail(res, 400, "pick_hours");
 
       if (a === "cp_open") {
         if (!st.t) st.t = Date.now();
         await R("SET", "bc:cp:" + cid, JSON.stringify(st), "EX", 3600);
-        return res.json(await view(st));
+        return res.json(view(st));
       }
 
       if (a === "cp_next") {
         if (!st.t) return fail(res, 400, "not_opened");
-        const v = await view(st);
+        const v = view(st);
         if (v.left > 0) return res.status(400).json({ error: "too_fast", left: v.left });
         st.step++; st.t = 0;
-        if (st.step < STEPS) {
+        if (st.step < tier.n) {
           await R("SET", "bc:cp:" + cid, JSON.stringify(st), "EX", 3600);
-          return res.json(await view(st));
+          return res.json(view(st));
         }
         if (!(await limit("key:" + ip, 3, 86400))) return fail(res, 429, "key_limit");
         const hex = crypto.randomBytes(6).toString("hex").toUpperCase();
         const key = `BC-${hex.slice(0, 4)}-${hex.slice(4, 8)}-${hex.slice(8, 12)}`;
-        const exp = Date.now() + KEY_HOURS * 3600 * 1000;
-        await R("SET", "bc:key:" + key, JSON.stringify({ at: Date.now(), exp }), "EX", KEY_HOURS * 3600);
-        await R("SET", "bc:ck:" + cid, key, "EX", KEY_HOURS * 3600);
+        const exp = Date.now() + tier.h * 3600 * 1000;
+        await R("SET", "bc:key:" + key, JSON.stringify({ at: Date.now(), exp, tier: st.tier }), "EX", tier.h * 3600);
+        await R("SET", "bc:ck:" + cid, key, "EX", tier.h * 3600);
         await R("DEL", "bc:cp:" + cid);
-        return res.json(await view({ step: STEPS, t: 0 }, { key, exp }));
+        return res.json(view({ tier: st.tier, step: tier.n, t: 0 }, { key, exp }));
       }
     }
 
