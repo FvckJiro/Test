@@ -43,7 +43,7 @@ nav{display:flex;align-items:center;gap:28px;height:62px}
 /* pages */
 main>section{display:none}
 main>section.on{display:block}
-h1,h2,h3{font-family:var(--title);font-weight:700;line-height:1.08;letter-spacing:0}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1;letter-spacing:.02em}
 h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .lede{color:var(--mute);max-width:56ch}
 .page{padding:64px 0 90px}
@@ -51,7 +51,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:3px solid var(--paper)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1fr;gap:30px;align-items:center;min-height:560px;padding-top:50px;padding-bottom:50px}
-.hero h1{font-size:clamp(50px,8.6vw,112px);text-transform:capitalize;line-height:1.02}
+.hero h1{font-size:clamp(54px,9.5vw,124px);text-transform:uppercase;line-height:.98}
 .hero h1 span{display:block}
 .hero h1 .r{color:var(--acc);-webkit-text-stroke:0}
 .hero p{margin:22px 0 30px;color:#cfcbc4;max-width:44ch;font-size:19px}
@@ -79,7 +79,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .grim{display:flex;flex-direction:column;background:var(--panel);border:3px solid var(--paper);padding:26px 24px 24px;text-decoration:none;position:relative;transition:transform .15s, box-shadow .15s}
 .grim:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--acc)}
 .grim .ic{width:64px;height:64px;margin-bottom:16px}
-.grim h3{font-size:42px;margin-bottom:8px}
+.grim h3{font-size:36px;margin-bottom:8px}
 .grim p{color:var(--mute);font-size:16px;flex:1}
 .grim .leaves{margin-top:18px;font-size:15px;color:var(--paper);font-weight:700}
 .grim.five{border-color:var(--acc);background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 16%,#050505),var(--panel) 60%)}
@@ -93,7 +93,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .list{display:grid;gap:16px}
 .script{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;background:var(--panel);border:3px solid var(--line);border-left:8px solid var(--paper);padding:20px 22px}
 .script:hover{border-color:var(--paper);border-left-color:var(--acc)}
-.script h3{font-size:34px;margin-bottom:4px}
+.script h3{font-size:30px;margin-bottom:4px}
 .meta{color:var(--mute);font-size:15px}
 .feat{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .feat span{border:2px solid var(--line);padding:2px 10px;font-size:14px;color:#cfcbc4}
@@ -105,7 +105,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
 .plan{background:var(--panel);border:3px solid var(--paper);padding:30px 28px}
 .plan.pro{border-color:var(--gold);background:linear-gradient(165deg,#1d1505,var(--panel) 55%)}
-.plan h3{font-size:54px}
+.plan h3{font-size:46px}
 .price{font:400 30px/1 var(--display);margin:10px 0 22px;color:var(--mute)}
 .pro .price{color:var(--gold)}
 .plan ul{list-style:none;padding:0;margin:0 0 28px}
@@ -119,7 +119,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .steps{list-style:none;padding:0;margin:40px 0 0;display:grid;gap:18px;counter-reset:s}
 .steps li{counter-increment:s;display:grid;grid-template-columns:70px 1fr;gap:20px;background:var(--panel);border:3px solid var(--paper);padding:22px}
 .steps li::before{content:counter(s);font:400 64px/.9 var(--display);color:var(--acc)}
-.steps h3{font-size:34px;margin-bottom:6px}
+.steps h3{font-size:30px;margin-bottom:6px}
 .steps p{color:var(--mute);font-size:16px}
 .code{display:flex;gap:12px;align-items:stretch;margin-top:14px}
 .code code{flex:1;background:var(--ink);border:2px solid var(--line);padding:12px 14px;font:500 14px/1.5 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;white-space:nowrap;color:#e8e4dc}
@@ -182,13 +182,13 @@ main>section.on{animation:reveal .5s cubic-bezier(.7,0,.2,1)}
 .post:hover{border-color:var(--paper);border-left-color:var(--acc)}
 .th{width:160px;height:100px;object-fit:cover;border:2px solid var(--line);background:#000;display:block}
 .th.none{display:grid;place-items:center;font:400 38px var(--display);color:var(--mute)}
-.post h3{font-size:32px;margin-bottom:4px}
+.post h3{font-size:28px;margin-bottom:4px}
 .stat{color:var(--mute);font-size:14px;margin-top:10px}
 .vf{width:1.05em;height:1.05em;color:#3a9bff;vertical-align:-.14em;margin-left:5px}
 dialog{background:var(--ink);color:var(--paper);border:3px solid var(--paper);padding:0;width:min(760px,94vw);max-height:92vh;box-shadow:8px 8px 0 var(--acc)}
 dialog::backdrop{background:#000d}
 .dlg{padding:26px;overflow:auto;max-height:calc(92vh - 6px)}
-.dlg h3{font-size:46px;margin-bottom:10px}
+.dlg h3{font-size:40px;margin-bottom:10px}
 .dlg label{display:block;font-size:15px;color:var(--mute);margin-bottom:14px}
 .in{display:block;width:100%;margin-top:6px;background:var(--ink);border:3px solid var(--line);color:var(--paper);padding:10px 12px;font:500 16px var(--body)}
 .in:focus{border-color:var(--paper);outline:none}
@@ -201,7 +201,7 @@ textarea.code,.src{font:500 13px/1.5 ui-monospace,Menlo,Consolas,monospace}
 .desc{margin:14px 0;white-space:pre-wrap;color:#cfcbc4}
 .src{background:#000;border:2px solid var(--line);padding:14px;max-height:280px;overflow:auto;white-space:pre;margin:14px 0 6px;color:#e8e4dc}
 .dlg a{color:var(--paper);font-weight:700}
-.adm h3{font-size:40px;margin:38px 0 14px}
+.adm h3{font-size:36px;margin:38px 0 14px}
 .tw{overflow-x:auto}
 .tbl{width:100%;border-collapse:collapse;min-width:560px}
 .tbl th,.tbl td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
@@ -253,7 +253,7 @@ footer{padding-bottom:70px}
 .btn.ghost:disabled:hover{background:transparent;color:var(--paper);border-color:var(--paper)}
 .narrow{max-width:600px}
 .auth{margin:26px 0 20px}
-.sec{font-size:42px;margin:38px 0 14px}
+.sec{font-size:36px;margin:38px 0 14px}
 .av{width:104px;height:104px;border-radius:50%;object-fit:cover;border:4px solid var(--ink);outline:3px solid var(--acc);background:#000;display:block;flex:none}
 .av.none{display:grid;place-items:center;font:400 48px var(--display);background:color-mix(in srgb,var(--acc) 35%,#050505);color:var(--paper)}
 .pbanner{height:190px;border:3px solid var(--paper);overflow:hidden;background:linear-gradient(120deg,color-mix(in srgb,var(--acc) 55%,#050505),#0e0e0e)}
@@ -405,7 +405,7 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px
 
 /* band, footer */
 .band{background:linear-gradient(180deg,#101014,#000);border-top:1px solid rgba(255,255,255,.1);color:var(--paper);padding:56px 0}
-.band p{font:700 clamp(32px,5vw,56px)/1.1 var(--title);max-width:22ch;background:linear-gradient(180deg,#fff,#9a97a3);-webkit-background-clip:text;background-clip:text;color:transparent}
+.band p{font:400 clamp(32px,5vw,56px)/1.05 var(--display);letter-spacing:.02em;text-transform:uppercase;max-width:24ch;background:linear-gradient(180deg,#fff,#9a97a3);-webkit-background-clip:text;background-clip:text;color:transparent}
 footer{border-top:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,transparent,rgba(0,0,0,.6))}
 
 /* inputs */
@@ -530,7 +530,7 @@ dialog::backdrop{background:rgba(0,0,0,.78);-webkit-backdrop-filter:blur(6px);ba
         </a>
       </div>
     </div>
-    <div class="band"><div class="wrap"><p>A mage without magic is still a mage. Run it anyway.</p></div></div>
+    <div class="band"><div class="wrap"><p>Made for Roblox. Run it anyway.</p></div></div>
   </section>
 
   <!-- SCRIPTS -->
