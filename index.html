@@ -11,12 +11,13 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☘</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=UnifrakturCook:wght@700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 @property --acc{syntax:"<color>";inherits:true;initial-value:#d1121b}
 :root{
   --ink:#050505; --panel:#0e0e0e; --line:#2a2a2a; --paper:#f3f1ec; --mute:#9a9690;
   --acc:#d1121b; --gold:#e0a93b; transition:--acc 1.2s ease;
+  --title:"UnifrakturCook","Pirata One","Old English Text MT",serif;
   --display:"Anton","Impact","Arial Narrow",sans-serif;
   --body:"Zen Kaku Gothic New","Hiragino Sans","Segoe UI",system-ui,sans-serif;
 }
@@ -31,8 +32,8 @@ a{color:inherit}
 /* nav */
 header{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:3px solid var(--paper)}
 nav{display:flex;align-items:center;gap:28px;height:62px}
-.brand{display:flex;align-items:center;gap:10px;font:400 26px/1 var(--display);letter-spacing:.04em;text-decoration:none;flex:none}
-.brand svg{width:34px;height:34px}
+.brand{display:flex;align-items:center;gap:10px;font:700 32px/1 var(--title);letter-spacing:0;text-decoration:none;flex:none}
+.brand svg{width:38px;height:38px}
 .tabs{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs a{font:400 19px/1 var(--display);letter-spacing:.05em;text-decoration:none;padding:21px 14px 18px;border-bottom:5px solid transparent;color:var(--mute);white-space:nowrap}
@@ -42,7 +43,7 @@ nav{display:flex;align-items:center;gap:28px;height:62px}
 /* pages */
 main>section{display:none}
 main>section.on{display:block}
-h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.98;letter-spacing:.015em}
+h1,h2,h3{font-family:var(--title);font-weight:700;line-height:1.08;letter-spacing:0}
 h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .lede{color:var(--mute);max-width:56ch}
 .page{padding:64px 0 90px}
@@ -50,7 +51,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:3px solid var(--paper)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1fr;gap:30px;align-items:center;min-height:560px;padding-top:50px;padding-bottom:50px}
-.hero h1{font-size:clamp(54px,9.5vw,124px);text-transform:uppercase}
+.hero h1{font-size:clamp(50px,8.6vw,112px);text-transform:capitalize;line-height:1.02}
 .hero h1 span{display:block}
 .hero h1 .r{color:var(--acc);-webkit-text-stroke:0}
 .hero p{margin:22px 0 30px;color:#cfcbc4;max-width:44ch;font-size:19px}
@@ -78,7 +79,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .grim{display:flex;flex-direction:column;background:var(--panel);border:3px solid var(--paper);padding:26px 24px 24px;text-decoration:none;position:relative;transition:transform .15s, box-shadow .15s}
 .grim:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--acc)}
 .grim .ic{width:64px;height:64px;margin-bottom:16px}
-.grim h3{font-size:36px;margin-bottom:8px}
+.grim h3{font-size:42px;margin-bottom:8px}
 .grim p{color:var(--mute);font-size:16px;flex:1}
 .grim .leaves{margin-top:18px;font-size:15px;color:var(--paper);font-weight:700}
 .grim.five{border-color:var(--acc);background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 16%,#050505),var(--panel) 60%)}
@@ -92,7 +93,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .list{display:grid;gap:16px}
 .script{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;background:var(--panel);border:3px solid var(--line);border-left:8px solid var(--paper);padding:20px 22px}
 .script:hover{border-color:var(--paper);border-left-color:var(--acc)}
-.script h3{font-size:30px;margin-bottom:4px}
+.script h3{font-size:34px;margin-bottom:4px}
 .meta{color:var(--mute);font-size:15px}
 .feat{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .feat span{border:2px solid var(--line);padding:2px 10px;font-size:14px;color:#cfcbc4}
@@ -104,7 +105,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
 .plan{background:var(--panel);border:3px solid var(--paper);padding:30px 28px}
 .plan.pro{border-color:var(--gold);background:linear-gradient(165deg,#1d1505,var(--panel) 55%)}
-.plan h3{font-size:46px}
+.plan h3{font-size:54px}
 .price{font:400 30px/1 var(--display);margin:10px 0 22px;color:var(--mute)}
 .pro .price{color:var(--gold)}
 .plan ul{list-style:none;padding:0;margin:0 0 28px}
@@ -118,7 +119,7 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 .steps{list-style:none;padding:0;margin:40px 0 0;display:grid;gap:18px;counter-reset:s}
 .steps li{counter-increment:s;display:grid;grid-template-columns:70px 1fr;gap:20px;background:var(--panel);border:3px solid var(--paper);padding:22px}
 .steps li::before{content:counter(s);font:400 64px/.9 var(--display);color:var(--acc)}
-.steps h3{font-size:30px;margin-bottom:6px}
+.steps h3{font-size:34px;margin-bottom:6px}
 .steps p{color:var(--mute);font-size:16px}
 .code{display:flex;gap:12px;align-items:stretch;margin-top:14px}
 .code code{flex:1;background:var(--ink);border:2px solid var(--line);padding:12px 14px;font:500 14px/1.5 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;white-space:nowrap;color:#e8e4dc}
@@ -181,13 +182,13 @@ main>section.on{animation:reveal .5s cubic-bezier(.7,0,.2,1)}
 .post:hover{border-color:var(--paper);border-left-color:var(--acc)}
 .th{width:160px;height:100px;object-fit:cover;border:2px solid var(--line);background:#000;display:block}
 .th.none{display:grid;place-items:center;font:400 38px var(--display);color:var(--mute)}
-.post h3{font-size:28px;margin-bottom:4px}
+.post h3{font-size:32px;margin-bottom:4px}
 .stat{color:var(--mute);font-size:14px;margin-top:10px}
 .vf{width:1.05em;height:1.05em;color:#3a9bff;vertical-align:-.14em;margin-left:5px}
 dialog{background:var(--ink);color:var(--paper);border:3px solid var(--paper);padding:0;width:min(760px,94vw);max-height:92vh;box-shadow:8px 8px 0 var(--acc)}
 dialog::backdrop{background:#000d}
 .dlg{padding:26px;overflow:auto;max-height:calc(92vh - 6px)}
-.dlg h3{font-size:40px;margin-bottom:10px}
+.dlg h3{font-size:46px;margin-bottom:10px}
 .dlg label{display:block;font-size:15px;color:var(--mute);margin-bottom:14px}
 .in{display:block;width:100%;margin-top:6px;background:var(--ink);border:3px solid var(--line);color:var(--paper);padding:10px 12px;font:500 16px var(--body)}
 .in:focus{border-color:var(--paper);outline:none}
@@ -200,7 +201,7 @@ textarea.code,.src{font:500 13px/1.5 ui-monospace,Menlo,Consolas,monospace}
 .desc{margin:14px 0;white-space:pre-wrap;color:#cfcbc4}
 .src{background:#000;border:2px solid var(--line);padding:14px;max-height:280px;overflow:auto;white-space:pre;margin:14px 0 6px;color:#e8e4dc}
 .dlg a{color:var(--paper);font-weight:700}
-.adm h3{font-size:36px;margin:38px 0 14px}
+.adm h3{font-size:40px;margin:38px 0 14px}
 .tw{overflow-x:auto}
 .tbl{width:100%;border-collapse:collapse;min-width:560px}
 .tbl th,.tbl td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
@@ -252,7 +253,7 @@ footer{padding-bottom:70px}
 .btn.ghost:disabled:hover{background:transparent;color:var(--paper);border-color:var(--paper)}
 .narrow{max-width:600px}
 .auth{margin:26px 0 20px}
-.sec{font-size:36px;margin:38px 0 14px}
+.sec{font-size:42px;margin:38px 0 14px}
 .av{width:104px;height:104px;border-radius:50%;object-fit:cover;border:4px solid var(--ink);outline:3px solid var(--acc);background:#000;display:block;flex:none}
 .av.none{display:grid;place-items:center;font:400 48px var(--display);background:color-mix(in srgb,var(--acc) 35%,#050505);color:var(--paper)}
 .pbanner{height:190px;border:3px solid var(--paper);overflow:hidden;background:linear-gradient(120deg,color-mix(in srgb,var(--acc) 55%,#050505),#0e0e0e)}
@@ -273,27 +274,211 @@ footer{padding-bottom:70px}
 .swatches button{width:34px;height:34px;border:3px solid var(--line);cursor:pointer;padding:0}
 .swatches button[aria-pressed=true]{border-color:var(--paper)}
 .swatches input{width:44px;height:34px;border:3px solid var(--line);background:none;padding:0;cursor:pointer}
-.cplist{margin:16px 0 0;display:grid;gap:10px}
-.cpi{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border:3px solid var(--line);padding:14px;background:var(--ink)}
-.cpi .cpn{display:grid;place-items:center;width:44px;height:44px;border:3px solid var(--line);font:400 22px var(--display);color:var(--mute)}
-.cpi.now{border-color:var(--paper)}
-.cpi.now .cpn{background:var(--acc);border-color:var(--acc);color:var(--paper)}
-.cpi.done .cpn{background:var(--paper);border-color:var(--paper);color:var(--ink)}
-.cpi.lock{opacity:.5}
+/* key flow */
+.kg{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:start}
+.kside{background:var(--panel);border:3px solid var(--paper);padding:20px;display:grid;gap:14px}
+.kside h4{font:400 14px/1 var(--display);letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.knote{border:2px solid var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent);padding:12px 14px;font-size:15px;line-height:1.45}
+.kprog{border:2px solid var(--line);padding:12px 14px}
+.kprog div{display:flex;justify-content:space-between;align-items:baseline}
+.kprog b{font:400 36px/1 var(--display)}
+.kprog span{color:var(--mute);font-size:14px}
+.kbar{height:8px;background:var(--line);margin-top:10px}
+.kbar i{display:block;height:100%;background:var(--acc);transition:width .4s}
+.ksteps{display:grid;gap:6px}
+.kstep{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:center;padding:9px;border:2px solid transparent}
+.kstep .n{display:grid;place-items:center;width:36px;height:36px;border:3px solid var(--line);font:400 18px var(--display);color:var(--mute)}
+.kstep strong{display:block;font-size:16px;line-height:1.2}
+.kstep small{color:var(--mute);font-size:13px}
+.kstep.now{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.kstep.now .n{background:var(--acc);border-color:var(--acc);color:var(--paper)}
+.kstep.done .n{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.kstep.lock{opacity:.55}
+.kcard{background:var(--panel);border:3px solid var(--paper);padding:34px 28px;text-align:center;max-width:620px;width:100%;justify-self:center}
+.kcard h2{font-size:clamp(44px,7vw,64px);margin:6px 0 6px}
+.kcard .lede{margin:0 auto 24px}
+.kico{width:68px;height:68px;margin:0 auto 6px;display:grid;place-items:center;border:3px solid var(--paper);background:var(--ink)}
+.kico svg{width:34px;height:34px}
+.kprov{display:flex;align-items:center;gap:10px;text-align:left;margin:22px 0 10px;font:400 15px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.kprov::before{content:"";width:10px;height:10px;background:var(--acc)}
+.tier{display:grid;grid-template-columns:56px 1fr auto;gap:16px;align-items:center;width:100%;text-align:left;background:var(--ink);border:3px solid var(--line);border-left:8px solid var(--paper);color:var(--paper);padding:14px 16px;margin-bottom:12px;cursor:pointer;font:inherit}
+.tier:hover{border-color:var(--paper);border-left-color:var(--acc);transform:translateX(3px)}
+.tier .tclock{display:grid;place-items:center;width:56px;height:56px;border:3px solid var(--paper);background:var(--panel)}
+.tier .tclock svg{width:28px;height:28px}
+.tier b{font:400 28px/1 var(--display);letter-spacing:.03em}
+.tier em{font:400 12px/1 var(--display);letter-spacing:.08em;font-style:normal;background:var(--gold);color:var(--ink);padding:4px 7px 2px;margin-left:10px;vertical-align:middle;text-transform:uppercase}
+.tier small{display:flex;align-items:center;gap:8px;color:var(--mute);font-size:14px;margin-top:6px}
+.tier .dots{display:inline-flex;gap:4px;flex:none;flex-wrap:nowrap}
+.dots u{width:8px;height:8px;background:var(--acc);display:block}
+.tier .tgo{font:400 24px var(--display);border:2px solid var(--line);width:38px;height:38px;display:grid;place-items:center}
+.tier:hover .tgo{background:var(--paper);color:var(--ink)}
+.kbadge{display:inline-block;border:2px solid var(--acc);color:var(--acc);font:400 14px/1 var(--display);letter-spacing:.12em;padding:7px 12px 5px;text-transform:uppercase}
+.ring{width:190px;height:190px;margin:10px auto 22px;position:relative}
+.ring svg{width:100%;height:100%}
+.ring circle{fill:none;stroke-width:10}
+.ring .rt{stroke:var(--line)}
+.ring .rf{stroke:var(--acc);stroke-linecap:butt;transition:stroke-dashoffset .5s}
+.ring div{position:absolute;inset:0;display:grid;place-content:center}
+.ring b{font:400 46px/1 var(--display)}
+.ring span{font-size:12px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.kgo{min-width:260px}
+.kwait{position:relative;overflow:hidden;min-width:260px;max-width:420px;margin:0 auto;border:3px solid var(--line);background:var(--ink);padding:15px 20px 13px;font:400 20px/1 var(--display);letter-spacing:.05em}
+.kwait i{position:absolute;inset:0 auto 0 0;background:color-mix(in srgb,var(--acc) 70%,#000);transition:width 1s linear}
+.kwait span{position:relative}
+.khint{color:var(--mute);font-size:15px;margin:16px auto 0;max-width:46ch}
+.kback{margin-top:18px}
+.kkey{display:flex;gap:12px;align-items:stretch;text-align:left;margin-top:18px}
+.kkey code{flex:1;background:var(--ink);border:2px solid var(--line);padding:14px;font:500 18px/1.4 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;white-space:nowrap;color:#e8e4dc;letter-spacing:.04em}
+@media(max-width:860px){.kg{grid-template-columns:1fr}.kside{order:2}.tier{grid-template-columns:48px 1fr auto;gap:12px}.tier .tclock{width:48px;height:48px}}
+/* ===== v5 look: black gradient, glass panels, shine ===== */
+:root{
+  --ink:#000; --panel:#0c0c0f; --line:#26262c; --paper:#f4f2ee; --mute:#9b98a2; --gold:#f0b94a;
+  --edge:linear-gradient(135deg,rgba(255,255,255,.42) 0%,color-mix(in srgb,var(--acc) 75%,transparent) 38%,rgba(255,255,255,.06) 70%,rgba(255,255,255,.22) 100%);
+  --glass:linear-gradient(160deg,#17171c 0%,#0b0b0e 52%,#040405 100%);
+  --gloss:linear-gradient(180deg,color-mix(in srgb,var(--acc) 72%,#fff) 0%,var(--acc) 46%,color-mix(in srgb,var(--acc) 52%,#000) 100%);
+}
+body{
+  background-color:#000;
+  background-image:
+    radial-gradient(1100px 560px at 88% -8%,rgba(160,12,24,.26),transparent 62%),
+    radial-gradient(800px 520px at -6% 38%,rgba(90,8,18,.2),transparent 60%),
+    radial-gradient(rgba(255,255,255,.035) 1px,transparent 1.4px),
+    linear-gradient(180deg,#101014 0,#000 760px);
+  background-size:auto,auto,9px 9px,auto;
+  background-attachment:fixed,fixed,scroll,scroll;
+}
+::selection{background:var(--acc);color:#fff}
+
+/* nav */
+header{background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.09);box-shadow:0 10px 40px -18px #000}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:.6}
+.tabs a{border-bottom-width:3px;transition:color .2s}
+.tabs a[aria-current="page"]{border-bottom-color:var(--acc);text-shadow:0 0 18px color-mix(in srgb,var(--acc) 70%,transparent);box-shadow:0 12px 18px -14px var(--acc)}
+.brand{background:linear-gradient(180deg,#fff,#b4b1ba);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand svg{filter:drop-shadow(0 0 8px rgba(255,255,255,.35))}
+
+/* hero */
+.hero{border-bottom:1px solid rgba(255,255,255,.1)}
+.hero .bg::after{background:linear-gradient(90deg,#000 0,rgba(0,0,0,.72) 30%,transparent 66%),linear-gradient(0deg,#000 0,transparent 42%),linear-gradient(180deg,rgba(0,0,0,.5) 0,transparent 25%)}
+.hero h1 span{background:linear-gradient(180deg,#fff 0%,#cfccd6 55%,#8d8a96 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 18px rgba(0,0,0,.6))}
+.hero h1 span.r{background:linear-gradient(180deg,#ff6a72 0%,var(--acc) 55%,#7a0710 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px color-mix(in srgb,var(--acc) 55%,transparent))}
+.hero p{color:#d6d3dc}
+
+/* shared sheen sweep */
+.btn,.grim,.tier,.plan,.kcard,.tile{position:relative;overflow:hidden}
+.btn::after,.grim::after,.tier::after,.plan::after,.kcard::after,.tile::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.16) 50%,transparent 62%);transform:translateX(-130%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.btn:hover::after,.grim:hover::after,.tier:hover::after,.plan:hover::after,.kcard:hover::after,.tile:hover::after{transform:translateX(130%)}
+.btn:not(.ghost):not(.sm)::after,.btn.sm:not(.ghost)::after{animation:sheen 5s ease-in-out 1.5s infinite}
+@keyframes sheen{0%,70%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+
+/* buttons */
+.btn{transform:none;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:var(--gloss);color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.45);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -10px 18px rgba(0,0,0,.18),0 10px 26px -10px color-mix(in srgb,var(--acc) 85%,transparent);
+  transition:transform .18s,box-shadow .18s,filter .18s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.12);background:var(--gloss);border-color:rgba(255,255,255,.4);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 14px 34px -10px var(--acc)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02));color:var(--paper);text-shadow:none;border-color:rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 8px 22px -14px #000}
+.btn.ghost:hover{background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.05));border-color:rgba(255,255,255,.5);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 26px -8px rgba(255,255,255,.3)}
+.btn:disabled,.btn:disabled:hover{opacity:.55;transform:none;filter:none;cursor:default}
+.btn.ghost:disabled:hover{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02));border-color:rgba(255,255,255,.2);color:var(--paper)}
+
+/* panels */
+.grim,.plan,.kcard,.kside,.tile,.arow,.script,.post,.cust .in,dialog{border-radius:18px}
+.grim,.plan,.kcard,.kside{border:1px solid transparent;background:var(--glass) padding-box,var(--edge) border-box;box-shadow:0 24px 60px -28px #000,0 0 0 1px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06)}
+.grim{padding:28px 26px}
+.grim:hover{transform:translateY(-6px);box-shadow:0 30px 70px -26px color-mix(in srgb,var(--acc) 70%,transparent),inset 0 1px 0 rgba(255,255,255,.1)}
+.grim .ic{filter:drop-shadow(0 0 10px rgba(255,255,255,.25))}
+.grim.five{background:linear-gradient(160deg,#241014 0%,#0b0b0e 60%,#040405 100%) padding-box,var(--edge) border-box}
+.grim.five .leaves{color:#ff5a62}
+.plan.pro{background:linear-gradient(160deg,#2a1d07 0%,#0d0b08 55%,#040405 100%) padding-box,linear-gradient(135deg,#ffe9a8,#f0b94a 40%,rgba(240,185,74,.15) 75%,#ffe9a8) border-box}
+.plan li{border-top:1px solid rgba(255,255,255,.08)}
+.script,.post{background:var(--glass);border:1px solid rgba(255,255,255,.09);border-left:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 14px 40px -26px #000;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative}
+.script::before,.post::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:3px;background:var(--gloss);opacity:.85}
+.script:hover,.post:hover{border-color:color-mix(in srgb,var(--acc) 65%,transparent);border-left-color:color-mix(in srgb,var(--acc) 65%,transparent);transform:translateY(-2px);box-shadow:0 18px 44px -24px var(--acc)}
+.th{border-radius:10px;border:1px solid rgba(255,255,255,.12)}
+.feat span{border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.04);padding:2px 12px}
+.st{border-radius:6px}
+.empty{border:1px dashed rgba(255,255,255,.16);border-radius:16px;background:rgba(255,255,255,.02)}
+.tile{background:var(--glass);border:1px solid rgba(255,255,255,.1);border-top:1px solid rgba(255,255,255,.1);box-shadow:inset 0 2px 0 var(--acc),inset 0 1px 0 rgba(255,255,255,.06)}
+.tile b{background:linear-gradient(180deg,#fff,#a9a6b1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.arow{background:var(--glass);border:1px solid rgba(255,255,255,.09)}
+
+/* band, footer */
+.band{background:linear-gradient(180deg,#101014,#000);border-top:1px solid rgba(255,255,255,.1);color:var(--paper);padding:56px 0}
+.band p{font:700 clamp(32px,5vw,56px)/1.1 var(--title);max-width:22ch;background:linear-gradient(180deg,#fff,#9a97a3);-webkit-background-clip:text;background-clip:text;color:transparent}
+footer{border-top:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,transparent,rgba(0,0,0,.6))}
+
+/* inputs */
+.in,.search{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:12px;box-shadow:inset 0 2px 8px rgba(0,0,0,.5);transition:border-color .2s,box-shadow .2s}
+.in:focus,.search:focus{border-color:var(--acc);outline:none;box-shadow:inset 0 2px 8px rgba(0,0,0,.5),0 0 0 3px color-mix(in srgb,var(--acc) 30%,transparent)}
+.chips button{border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.03);transition:all .2s}
+.chips button:hover{border-color:rgba(255,255,255,.5)}
+.chips button[aria-pressed=true]{background:var(--gloss);color:#fff;border-color:rgba(255,255,255,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 22px -10px var(--acc)}
+.code code,.kkey code,.src{border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#000}
+.msg{color:#ffd37a}
+
+/* dialogs */
+dialog{background:var(--glass) padding-box,var(--edge) border-box;border:1px solid transparent;box-shadow:0 40px 100px -20px #000,0 0 80px -30px var(--acc)}
+dialog::backdrop{background:rgba(0,0,0,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+/* sound toggle */
+.dock button{border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.65);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 10px 26px -10px #000}
+.dock button:hover{background:var(--gloss);color:#fff;border-color:rgba(255,255,255,.4)}
+
+/* key flow */
+.kcard{padding:38px 30px}
+.kside{padding:22px}
+.kico{border-radius:20px;border:1px solid rgba(255,255,255,.25);background:var(--gloss);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 0 40px -6px var(--acc)}
+.kcard h2{background:linear-gradient(180deg,#fff,#a9a6b1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.knote{border:1px solid color-mix(in srgb,var(--acc) 60%,transparent);border-radius:12px;background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 22%,transparent),rgba(0,0,0,.2))}
+.kprog{border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.03)}
+.kbar{border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08)}
+.kbar i{background:var(--gloss);box-shadow:0 0 14px var(--acc)}
+.kstep{border-radius:12px;border:1px solid transparent}
+.kstep .n{border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+.kstep.now{border-color:color-mix(in srgb,var(--acc) 70%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 24%,transparent),transparent)}
+.kstep.now .n{background:var(--gloss);border-color:rgba(255,255,255,.3);box-shadow:0 0 16px -2px var(--acc)}
+.kstep.done .n{background:linear-gradient(180deg,#fff,#bdbac4);color:#000}
+.kprov{color:#bdbac4}
+.kprov::before{border-radius:50%;background:var(--gloss);box-shadow:0 0 10px var(--acc)}
+.tier{border-radius:16px;border:1px solid rgba(255,255,255,.1);border-left:1px solid rgba(255,255,255,.1);background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 12px 30px -20px #000;transition:transform .2s,border-color .2s,box-shadow .2s}
+.tier:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--acc) 70%,transparent);border-left-color:color-mix(in srgb,var(--acc) 70%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 40px -16px var(--acc)}
+.tier .tclock{border-radius:14px;border:1px solid rgba(255,255,255,.28);background:var(--gloss);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 6px 18px -6px var(--acc)}
+.tier em{border-radius:99px;background:linear-gradient(180deg,#ffe9a8,var(--gold));padding:5px 9px 3px}
+.dots u,.tier .dots u{border-radius:50%;background:var(--gloss);box-shadow:0 0 6px var(--acc)}
+.tier .tgo{border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05)}
+.tier:hover .tgo{background:var(--gloss);color:#fff;border-color:rgba(255,255,255,.4)}
+.kbadge{border-radius:99px;border:1px solid color-mix(in srgb,var(--acc) 70%,transparent);background:color-mix(in srgb,var(--acc) 16%,transparent);color:#ffb1b6;padding:8px 14px 6px}
+.ring svg{filter:drop-shadow(0 0 10px color-mix(in srgb,var(--acc) 55%,transparent))}
+.ring .rt{stroke:rgba(255,255,255,.08)}
+.ring .rf{stroke:url(#ringg);stroke-linecap:round}
+.ring b{background:linear-gradient(180deg,#fff,#a9a6b1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kwait{border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+.kwait i{background:var(--gloss);box-shadow:0 0 18px var(--acc)}
+.kwait span{text-shadow:0 1px 2px rgba(0,0,0,.6)}
+
+/* profile / dashboard */
+.pbanner{border-radius:18px;border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 60px -30px #000}
+.av{border:4px solid #000;outline:2px solid var(--acc);box-shadow:0 0 28px -4px var(--acc)}
+.swatches button,.swatches input{border-radius:10px;border:2px solid rgba(255,255,255,.14)}
+.swatches button[aria-pressed=true]{border-color:#fff;box-shadow:0 0 14px rgba(255,255,255,.4)}
+
+@media(prefers-reduced-motion:reduce){.btn::after{animation:none!important}.btn,.grim,.tier,.script,.post{transition:none}}
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <path id="leaf" d="M0,0 C-15,-7 -25,-28 -11,-40 C-5,-45 0,-39 0,-32 C0,-39 5,-45 11,-40 C25,-28 15,-7 0,0Z"/>
+    <linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7a82"/><stop offset="1" stop-color="#b30d17"/></linearGradient>
+    <path id="leaf" d="M0,-3 C-8,-9 -22,-19 -22,-33 C-22,-45 -9,-49.5 -4,-43.5 C-2.5,-41.5 -1,-40.5 0,-38.5 C1,-40.5 2.5,-41.5 4,-43.5 C9,-49.5 22,-45 22,-33 C22,-19 8,-9 0,-3Z"/>
   </defs>
 </svg>
 
 <header>
   <div class="wrap">
     <nav aria-label="Main">
-      <a class="brand" href="#home" aria-label="BlackClover home"><span data-clover="5" data-class="" aria-hidden="true"></span><span>BlackClover</span></a>
+      <a class="brand" href="#home" aria-label="BlackClover home"><span data-clover="5" data-class="" aria-hidden="true"></span><span>Black Clover</span></a>
       <div class="tabs">
         <a href="#home" data-tab="home">Home</a>
         <a href="#scripts" data-tab="scripts">Scripts</a>
@@ -340,7 +525,7 @@ footer{padding-bottom:70px}
         <a class="grim five" href="#premium">
           <span data-clover="5" data-class="ic"></span>
           <h3>Premium</h3>
-          <p>No key, early access, and the scripts that never reach the free tier.</p>
+          <p>The scripts that never reach the free tier.</p>
           <div class="leaves">Five-leaf. The rarest tier.</div>
         </a>
       </div>
@@ -366,7 +551,7 @@ footer{padding-bottom:70px}
   <section id="premium" data-page="premium">
     <div class="wrap page">
       <h2>Premium</h2>
-      <p class="lede">Skip the key, get new scripts first, and get help directly from the dev.</p>
+      <p class="lede">The scripts that never reach the free tier.</p>
       <div class="cmp">
         <div class="plan">
           <h3>Free</h3>
@@ -375,9 +560,6 @@ footer{padding-bottom:70px}
             <li class="y">All free scripts</li>
             <li class="y">Key required, renews on expiry</li>
             <li class="y">Community support in Discord</li>
-            <li class="n">Premium-only scripts</li>
-            <li class="n">Early access to updates</li>
-            <li class="n">No-key loader</li>
           </ul>
           <a class="btn ghost" href="#getkey">Get free key</a>
         </div>
@@ -387,9 +569,6 @@ footer{padding-bottom:70px}
           <ul>
             <li class="y">Everything in Free</li>
             <li class="y">Premium-only scripts</li>
-            <li class="y">Early access to updates</li>
-            <li class="y">No-key loader</li>
-            <li class="y">Priority support from the dev</li>
           </ul>
           <a class="btn" id="buy" href="#" target="_blank" rel="noopener">Buy on Discord</a>
         </div>
@@ -400,31 +579,7 @@ footer{padding-bottom:70px}
   <!-- GET KEY -->
   <section id="getkey" data-page="getkey">
     <div class="wrap page">
-      <h2>Get key</h2>
-      <p class="lede">Free access takes three steps. Finish the checkpoint, copy your key, and it works until it expires. Then repeat the checkpoint.</p>
-      <ol class="steps">
-        <li>
-          <div>
-            <h3>Complete the checkpoint</h3>
-            <p>Open each link, wait for the timer to finish, then press Continue.</p>
-            <div id="cp"><p class="meta" style="margin-top:14px">Loading...</p></div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Copy your key</h3>
-            <p>Your key shows up here after the last checkpoint. Copy it exactly, with no spaces.</p>
-            <div id="keyOut"></div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Run the script</h3>
-            <p>Paste the key into the key box when the script opens. Don't have a loader yet? Copy one from the Scripts tab.</p>
-            <div class="code"><code id="keyEx">script_key = "YOUR-KEY"</code><button class="btn sm" id="keyExCopy" data-copy="script_key = &quot;YOUR-KEY&quot;">Copy</button></div>
-          </div>
-        </li>
-      </ol>
+      <div class="kg" id="kg"><div class="empty">Loading...</div></div>
     </div>
   </section>
 
@@ -523,12 +678,14 @@ footer{padding-bottom:70px}
 /* ---------- edit here ---------- */
 const CONFIG = {
   discord: "https://discord.gg/znwCgvzBgu",
-  // One entry per checkpoint step. Put your Linkvertise / Work.ink / Lootlabs links in url.
-  // The server default is 3 steps and a 12 second wait per step (env CHECKPOINT_STEPS, CHECKPOINT_WAIT).
-  checkpoints: [
-    { label: "Join the Discord", url: "https://discord.gg/znwCgvzBgu" },
-    { label: "Checkpoint 2", url: "https://discord.gg/znwCgvzBgu" },
-    { label: "Checkpoint 3", url: "https://discord.gg/znwCgvzBgu" }
+  // Key tiers. id must match TIERS in api/bc.js. links = one checkpoint link per step (Linkvertise / Work.ink / Lootlabs).
+  // The number of links is the number of checkpoints, so it must equal "n" for that id in api/bc.js.
+  tiers: [
+    { id: "3",  label: "3 Hours", provider: "Linkvertise", links: ["https://discord.gg/znwCgvzBgu"] },
+    { id: "6",  label: "6 Hours", provider: "Work.ink", links: ["https://discord.gg/znwCgvzBgu"] },
+    { id: "12", label: "12 Hours", provider: "Work.ink", links: ["https://discord.gg/znwCgvzBgu", "https://discord.gg/znwCgvzBgu"] },
+    { id: "24", label: "1 Day", provider: "Work.ink", links: ["https://discord.gg/znwCgvzBgu", "https://discord.gg/znwCgvzBgu", "https://discord.gg/znwCgvzBgu"] },
+    { id: "96", label: "4 Days", provider: "Work.ink", best: true, links: ["https://discord.gg/znwCgvzBgu", "https://discord.gg/znwCgvzBgu", "https://discord.gg/znwCgvzBgu", "https://discord.gg/znwCgvzBgu", "https://discord.gg/znwCgvzBgu"] },
   ],
   buyLink: "https://discord.gg/znwCgvzBgu",
   freePrice: "$0",
@@ -541,7 +698,7 @@ const CONFIG = {
 const NS = "http://www.w3.org/2000/svg";
 function clover(n, cls){
   const leaves = Array.from({length:n},(_,i)=>`<use href="#leaf" class="leaf" transform="rotate(${i*360/n})"/>`).join("");
-  return `<svg class="${cls||""}" viewBox="-50 -50 100 100" xmlns="${NS}" fill="currentColor"><g fill="#050505" stroke="#f3f1ec" stroke-width="2.4" stroke-linejoin="round">${leaves}</g><path d="M2,2 C6,12 10,20 18,26" fill="none" stroke="#f3f1ec" stroke-width="3" stroke-linecap="round"/></svg>`;
+  return `<svg class="${cls||""}" viewBox="-50 -50 100 100" xmlns="${NS}" fill="currentColor"><g fill="#f3f1ec" stroke="#050505" stroke-width="2.4" stroke-linejoin="round">${leaves}</g></svg>`;
 }
 document.querySelectorAll("[data-clover]").forEach(el=>{
   el.outerHTML = clover(+el.dataset.clover, el.dataset.class);
@@ -990,60 +1147,93 @@ async function loadProfile(name){
   }catch(e){box.innerHTML=`<div class="empty">${e.code==="not_found"?"That profile does not exist.":esc(ERR[e.code]||"Could not reach the server.")}</div>`}
 }
 
-/* key checkpoint */
+/* key checkpoint: pick hours, then one card per checkpoint */
 const CP={st:null,timer:0,err:""};
-const CPERR={too_fast:"The timer is not done yet.",not_opened:"Open the checkpoint link first.",key_limit:"Key limit reached on this network today. Try again tomorrow."};
+const CPERR={too_fast:"The timer is not done yet.",not_opened:"Press Start first.",key_limit:"Key limit reached on this network today. Try again tomorrow.",bad_tier:"Pick one of the options.",pick_hours:"Pick your hours first."};
+const ICO_KEY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></svg>';
+const ICO_CLOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+const tierOf=id=>(CONFIG.tiers||[]).find(t=>t.id===String(id));
+async function cpCall(a,extra){return api(a,{cid,...(extra||{})})}
 async function loadCp(){
   CP.err="";
-  try{CP.st=await api("cp_state",{cid})}catch(e){CP.st=null;CP.err=ERR[e.code]||"Could not reach the server."}
+  try{CP.st=await cpCall("cp_state")}catch(e){CP.st=null;CP.err=ERR[e.code]||"Could not reach the server."}
   drawCp();cpTick();
 }
 function cpTick(){
   clearInterval(CP.timer);
-  if(!CP.st||!CP.st.opened||CP.st.left<=0||CP.st.key) return;
+  const s=CP.st;
+  if(!s||!s.opened||s.left<=0||s.key) return;
   CP.timer=setInterval(()=>{
-    CP.st.left=Math.max(0,CP.st.left-1);drawCp();
-    if(CP.st.left<=0) clearInterval(CP.timer);
+    s.left=Math.max(0,s.left-1);drawCp();
+    if(s.left<=0) clearInterval(CP.timer);
   },1000);
 }
-function drawCp(){
-  const el=$("cp"),s=CP.st;
-  if(!s){el.innerHTML=`<div class="empty" style="margin-top:14px">${esc(CP.err)}</div>`;drawKey();return}
-  const items=Array.from({length:s.total},(_,i)=>{
-    const c=(CONFIG.checkpoints||[])[i]||{label:"Checkpoint "+(i+1)};
-    const state=s.key||i<s.step?"done":i===s.step?"now":"lock";
-    let act="";
-    if(state==="now") act=!s.opened
-      ?`<button type="button" class="btn sm" data-cp="open">Open checkpoint</button>`
-      :(s.left>0?`<button type="button" class="btn sm" disabled>Continue in ${s.left}s</button>`:`<button type="button" class="btn sm" data-cp="next">Continue</button>`)+`<button type="button" class="btn ghost sm" data-cp="reopen">Open again</button>`;
-    return `<div class="cpi ${state}"><span class="cpn">${state==="done"?"&#10003;":i+1}</span><div><strong>${esc(c.label)}</strong>${act?`<div class="btns" style="margin-top:10px">${act}</div>`:""}</div></div>`;
-  }).join("");
-  el.innerHTML=`<div class="cplist">${items}</div><p class="msg" role="status" style="margin:12px 0 0">${esc(CP.err)}</p>`;
-  drawKey();
+function sideSteps(s,n){
+  const items=Array.from({length:n},(_,i)=>{
+    const st=s.key||i<s.step?"done":i===s.step?"now":"lock";
+    return `<div class="kstep ${st}"><span class="n">${st==="done"?"&#10003;":i+1}</span><div><strong>Checkpoint ${i+1}</strong><small>${st==="done"?"Done":st==="now"?"In progress":"Locked"}</small></div></div>`;
+  });
+  items.push(`<div class="kstep ${s.key?"done":"lock"}"><span class="n">${s.key?"&#10003;":"&#9679;"}</span><div><strong>Your key</strong><small>${s.key?"Ready":"Locked"}</small></div></div>`);
+  const done=s.key?n:s.step,pct=Math.round(done/n*100);
+  return `<h4>Key progress</h4><div class="kprog"><div><b>${done}/${n}</b><span>${pct}%</span></div><div class="kbar"><i style="width:${pct}%"></i></div></div>
+    <h4>Checkpoints</h4><div class="ksteps">${items.join("")}</div>`;
 }
-function drawKey(){
-  const s=CP.st,out=$("keyOut"),ex=$("keyEx"),cb=$("keyExCopy");
-  if(s&&s.key){
-    out.innerHTML=`<div class="code"><code>${esc(s.key)}</code><button type="button" class="btn sm" data-copy="${esc(s.key)}">Copy</button></div><p class="meta" style="margin-top:10px">Valid until ${esc(new Date(s.exp).toLocaleString())}.</p>`;
-    ex.textContent=`script_key = "${s.key}"`;
-  }else{
-    out.innerHTML=`<p class="meta">Finish the checkpoint to reveal your key.</p>`;
-    ex.textContent='script_key = "YOUR-KEY"';
+function tierBtn(t){
+  const n=t.links.length;
+  return `<button type="button" class="tier" data-tier="${esc(t.id)}"><span class="tclock">${ICO_CLOCK}</span><span><b>${esc(t.label)}</b>${t.best?"<em>Best value</em>":""}<small><span class="dots">${"<u></u>".repeat(n)}</span>${n} checkpoint${n>1?"s":""}</small></span><span class="tgo">&rarr;</span></button>`;
+}
+function drawCp(){
+  const root=$("kg"),s=CP.st;
+  if(!s){root.innerHTML=`<div class="empty">${esc(CP.err)}</div>`;return}
+  const err=CP.err?`<p class="msg" role="status" style="margin:14px 0 0">${esc(CP.err)}</p>`:"";
+  if(!s.tier&&!s.key){
+    const groups=[];
+    (CONFIG.tiers||[]).forEach(t=>{let g=groups.find(x=>x.p===t.provider);if(!g)groups.push(g={p:t.provider,list:[]});g.list.push(t)});
+    root.innerHTML=`<div class="kside"><h4>Your hours</h4><div class="knote">Not chosen yet. Pick one on the right to begin. The number of checkpoints depends on what you choose.</div></div>
+      <div class="kcard"><div class="kico">${ICO_KEY}</div><h2>Get Key</h2><p class="lede">Pick your hours. A longer key needs more checkpoints.</p>
+      ${groups.map(g=>`<div class="kprov">${esc(g.p)}</div>${g.list.map(tierBtn).join("")}`).join("")}${err}</div>`;
+    return;
   }
-  cb.dataset.copy=ex.textContent;
+  const t=tierOf(s.tier),n=s.total;
+  if(s.key){
+    const line=`script_key = "${s.key}"`;
+    root.innerHTML=`<div class="kside">${sideSteps(s,n)}</div>
+      <div class="kcard"><div class="kico">${ICO_KEY}</div><h2>Your key</h2><p class="lede">${esc(t?t.label:"")} key. Valid until ${esc(new Date(s.exp).toLocaleString())}.</p>
+      <div class="kkey"><code>${esc(s.key)}</code><button type="button" class="btn sm" data-copy="${esc(s.key)}">Copy</button></div>
+      <div class="kkey"><code>${esc(line)}</code><button type="button" class="btn sm" data-copy="${esc(line)}">Copy</button></div>
+      <p class="khint">Paste the key into the key box when the script opens. When it expires, come back and pick your hours again.</p></div>`;
+    return;
+  }
+  const i=s.step,pct=Math.round(i/n*100),C=2*Math.PI*70;
+  const act=!s.opened
+    ?`<button type="button" class="btn kgo" data-cp="open">Start</button>`
+    :s.left>0
+      ?`<div class="kwait"><i style="width:${Math.round((1-s.left/s.wait)*100)}%"></i><span>Verifying... ${s.left}s</span></div><p><button type="button" class="btn ghost sm kback" data-cp="reopen">Open link again</button></p>`
+      :`<button type="button" class="btn kgo" data-cp="next">${i+1>=n?"Get my key":"Continue"}</button><p><button type="button" class="btn ghost sm kback" data-cp="reopen">Open link again</button></p>`;
+  root.innerHTML=`<div class="kside">${sideSteps(s,n)}</div>
+    <div class="kcard"><span class="kbadge">Checkpoint ${i+1} of ${n}</span><h2>Checkpoint ${i+1}</h2>
+      <p class="meta">${i} of ${n} complete, ${pct}%${t?`, ${esc(t.label)} key via ${esc(t.provider)}`:""}</p>
+      <div class="ring"><svg viewBox="0 0 160 160" aria-hidden="true"><circle class="rt" cx="80" cy="80" r="70"/><circle class="rf" cx="80" cy="80" r="70" transform="rotate(-90 80 80)" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-i/n)).toFixed(1)}"/></svg><div><b>${i}/${n}</b><span>Complete</span></div></div>
+      ${act}${err}
+      <p class="khint">Press Start, finish the page that opens, then come back here and wait for the timer.</p>
+      <p><button type="button" class="btn ghost sm kback" data-cpback>Change hours</button></p></div>`;
 }
 document.addEventListener("click",async e=>{
-  const b=e.target.closest("[data-cp]");
-  if(!b||!CP.st) return;
-  const act=b.dataset.cp,c=(CONFIG.checkpoints||[])[CP.st.step];
-  if((act==="open"||act==="reopen")&&c&&c.url) window.open(c.url,"_blank","noopener");
-  if(act==="reopen") return;
+  const pick=e.target.closest("[data-tier]"),back=e.target.closest("[data-cpback]"),b=e.target.closest("[data-cp]");
+  if(!pick&&!back&&!b) return;
   try{
     CP.err="";
-    CP.st=await api(act==="open"?"cp_open":"cp_next",{cid});
+    if(pick) CP.st=await cpCall("cp_pick",{tier:pick.dataset.tier});
+    else if(back) CP.st=await cpCall("cp_reset");
+    else if(CP.st){
+      const act=b.dataset.cp,t=tierOf(CP.st.tier),url=t&&t.links[CP.st.step];
+      if((act==="open"||act==="reopen")&&url) window.open(url,"_blank","noopener");
+      if(act==="reopen") return;
+      CP.st=await cpCall(act==="open"?"cp_open":"cp_next");
+    }
   }catch(err){
     CP.err=CPERR[err.code]||ERR[err.code]||"That did not work. Try again.";
-    if(err.code==="too_fast") loadCp();
+    if(err.code==="too_fast") return loadCp();
   }
   drawCp();cpTick();
 });

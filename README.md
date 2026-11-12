@@ -32,9 +32,11 @@ Files (keep this layout, all in the project root):
 - Login, register and admin attempts are rate limited per IP.
 
 ## Key checkpoint
-- /#getkey runs a server-timed checkpoint: open each link, wait out the timer, continue. After the last step the server issues a key like BC-XXXX-XXXX-XXXX.
-- Optional env vars: CHECKPOINT_STEPS (default 3, keep CONFIG.checkpoints the same length), CHECKPOINT_WAIT seconds per step (default 12), KEY_HOURS (default 24).
-- Verify a key from your script loader: GET /api/bc?a=check&k=KEY returns {"valid":true,"exp":...} or {"valid":false}.
+- /#getkey: the visitor picks their hours (3h, 6h, 12h, 1 day, 4 days), then sees one card per checkpoint with a progress ring and a side list. Start opens the link, a timer runs, then Continue. After the last one the server issues a key like BC-XXXX-XXXX-XXXX.
+- Edit CONFIG.tiers in index.html: one link per checkpoint, so the number of links is the number of checkpoints.
+- The same ids and checkpoint counts live in TIERS at the top of api/bc.js (id -> hours h, checkpoints n). Change both together.
+- Optional env var: CHECKPOINT_WAIT seconds per checkpoint (default 12).
+- Verify a key from your loader: GET /api/bc?a=check&k=KEY returns {"valid":true,"exp":...} or {"valid":false}.
 - The timer cannot prove someone really finished a third-party link. Keep that in mind for ad revenue.
 
 ## Check
