@@ -49,9 +49,6 @@ h2{font-size:clamp(40px,7vw,72px);margin-bottom:14px}
 
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:3px solid var(--paper)}
-.hero::before{content:"";position:absolute;inset:-20%;
-  background:repeating-conic-gradient(from 0deg at 72% 48%,color-mix(in srgb,var(--acc) 20%,transparent) 0 .7deg,transparent .7deg 5deg);
-  -webkit-mask:radial-gradient(circle at 72% 48%,transparent 14%,#000 70%);mask:radial-gradient(circle at 72% 48%,transparent 14%,#000 70%)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1fr;gap:30px;align-items:center;min-height:560px;padding-top:50px;padding-bottom:50px}
 .hero h1{font-size:clamp(54px,9.5vw,124px);text-transform:uppercase}
 .hero h1 span{display:block}
@@ -132,10 +129,6 @@ footer a{color:var(--paper);font-weight:700}
 
 /* ---- animation ---- */
 #embers{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.cutter{position:absolute;z-index:3;left:-20%;top:46%;width:140%;height:7px;background:var(--paper);
-  box-shadow:0 0 22px 4px var(--acc);transform-origin:left center;transform:rotate(-17deg) scaleX(0);opacity:0;pointer-events:none}
-.cutter.go{animation:slash .75s .15s cubic-bezier(.7,0,.2,1) forwards}
-@keyframes slash{0%{transform:rotate(-17deg) scaleX(0);opacity:1}55%{transform:rotate(-17deg) scaleX(1);opacity:1}100%{transform:rotate(-17deg) scaleX(1);opacity:0}}
 .hero h1 span{animation:slam .65s cubic-bezier(.2,.9,.2,1) both}
 .hero h1 span:nth-child(1){animation-delay:.45s}
 .hero h1 span:nth-child(2){animation-delay:.6s}
@@ -175,13 +168,11 @@ main>section.on{animation:reveal .5s cubic-bezier(.7,0,.2,1)}
 .st.pro{background:var(--gold);color:var(--ink)}
 .join{flex:none}
 /* hero background */
-.hero::before{z-index:1;pointer-events:none}
 .hero .wrap{z-index:2}
 .hero .wrap>div{max-width:640px}
 .hero .bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--ink)}
-.hero .bg img{position:absolute;right:0;top:0;width:80%;height:100%;object-fit:cover;object-position:center 28%;-webkit-mask:linear-gradient(90deg,transparent 0,#000 42%);mask:linear-gradient(90deg,transparent 0,#000 42%)}
-.hero .bg::before{content:"";position:absolute;inset:0;z-index:1;background:var(--acc);mix-blend-mode:color;opacity:.3}
-.hero .bg::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#050505 0,#050505b0 30%,transparent 62%),linear-gradient(0deg,#050505cc,transparent 35%)}
+.hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero .bg::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#050505b8 0,#05050066 38%,transparent 66%),linear-gradient(0deg,#05050099,transparent 30%)}
 /* community */
 .tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:24px 0 22px}
 .tools .search{margin:0;flex:1 1 220px;max-width:none}
@@ -219,19 +210,14 @@ textarea.code,.src{font:500 13px/1.5 ui-monospace,Menlo,Consolas,monospace}
 .arow .btns{margin-top:12px}
 .admtop{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:18px 0 0}
 .admtop select{width:auto;margin:0}
-/* sound dock */
-.dock{position:fixed;left:16px;bottom:16px;z-index:30;width:230px;background:var(--ink);border:3px solid var(--paper);box-shadow:6px 6px 0 var(--acc)}
-.dock iframe{display:block;width:100%;height:129px;pointer-events:none}
-.ctl{display:flex;align-items:center;gap:10px;padding:9px 10px;border-top:3px solid var(--paper)}
-.ctl button{flex:none;background:var(--paper);color:var(--ink);border:0;font:400 15px/1 var(--display);letter-spacing:.05em;padding:9px 11px 7px;cursor:pointer}
-.ctl button:hover{background:var(--acc);color:var(--paper)}
-.ctl input{flex:1;min-width:0;accent-color:var(--acc)}
-footer{padding-bottom:200px}
+/* sound toggle */
+.dock{position:fixed;left:14px;bottom:14px;z-index:30}
+.dock button{background:var(--ink);color:var(--paper);border:2px solid var(--paper);font:400 14px/1 var(--display);letter-spacing:.05em;padding:9px 13px 7px;cursor:pointer}
+.dock button:hover{background:var(--paper);color:var(--ink)}
+.ytw{position:fixed;left:0;bottom:0;width:200px;height:200px;opacity:0;pointer-events:none;z-index:-1;overflow:hidden}
+footer{padding-bottom:70px}
 @media(max-width:860px){
-  .dock{width:176px;left:10px;bottom:10px}
-  .dock iframe{height:99px}
-  .ctl input{display:none}
-  .ctl button{width:100%}
+  .tiles{grid-template-columns:1fr 1fr}
   .hero .wrap{grid-template-columns:1fr;min-height:0}
   .emblem{order:-1;max-width:420px;margin:0 auto}
   .grims,.cmp{grid-template-columns:1fr}
@@ -241,7 +227,7 @@ footer{padding-bottom:200px}
   nav{gap:12px}
   .brand span{display:none}
   .join{display:none}
-  .hero .bg img{width:100%;-webkit-mask:none;mask:none;opacity:.5}
+  .hero .bg img{opacity:.55}
   .hero .bg::after{background:linear-gradient(0deg,#050505,#050505aa 45%,#05050566)}
   .post{grid-template-columns:104px 1fr;padding:12px}
   .th{width:104px;height:70px}
@@ -253,13 +239,47 @@ footer{padding-bottom:200px}
   .emblem::before{animation:none}
   .emblem .leaf{animation:none;stroke-dashoffset:0;fill:color-mix(in srgb,var(--acc) 14%,#050505)}
   .btn,.grim,.brand svg,.grim .ic{transition:none}
-  .cutter{display:none}
-  .hero h1 span,.hero p,.hero .btns,.emblem svg,main>section.on,.script,.steps li,.plan{animation:none}
+    .hero h1 span,.hero p,.hero .btns,.emblem svg,main>section.on,.script,.steps li,.plan{animation:none}
   #embers{display:none}
   .deck button[aria-selected=true] i{width:100%;animation:none}
   :root{transition:none}
   .emblem{transform:none}
 }
+/* accounts, profile, dashboard, checkpoint */
+[hidden]{display:none!important}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:disabled:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.btn.ghost:disabled:hover{background:transparent;color:var(--paper);border-color:var(--paper)}
+.narrow{max-width:600px}
+.auth{margin:26px 0 20px}
+.sec{font-size:36px;margin:38px 0 14px}
+.av{width:104px;height:104px;border-radius:50%;object-fit:cover;border:4px solid var(--ink);outline:3px solid var(--acc);background:#000;display:block;flex:none}
+.av.none{display:grid;place-items:center;font:400 48px var(--display);background:color-mix(in srgb,var(--acc) 35%,#050505);color:var(--paper)}
+.pbanner{height:190px;border:3px solid var(--paper);overflow:hidden;background:linear-gradient(120deg,color-mix(in srgb,var(--acc) 55%,#050505),#0e0e0e)}
+.pbanner img{width:100%;height:100%;object-fit:cover;display:block}
+.phead{display:flex;gap:20px;align-items:flex-start;margin:-52px 0 0 22px;position:relative}
+.phead>div{padding-top:62px;min-width:0}
+.phead h2,.dhead h2{margin:0 0 4px;font-size:clamp(34px,6vw,56px);overflow-wrap:anywhere}
+.dhead{display:flex;gap:20px;align-items:center}
+.pf .desc{margin-top:18px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0}
+.tile{background:var(--panel);border:3px solid var(--line);border-top:5px solid var(--acc);padding:14px 16px}
+.tile b{display:block;font:400 38px/1 var(--display)}
+.tile span{color:var(--mute);font-size:14px}
+.cust{max-width:640px}
+.cust label{display:block;font-size:15px;color:var(--mute);margin-bottom:14px}
+.cust .chk{display:flex;gap:8px;align-items:center;margin:-6px 0 14px}
+.swatches{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 16px}
+.swatches button{width:34px;height:34px;border:3px solid var(--line);cursor:pointer;padding:0}
+.swatches button[aria-pressed=true]{border-color:var(--paper)}
+.swatches input{width:44px;height:34px;border:3px solid var(--line);background:none;padding:0;cursor:pointer}
+.cplist{margin:16px 0 0;display:grid;gap:10px}
+.cpi{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border:3px solid var(--line);padding:14px;background:var(--ink)}
+.cpi .cpn{display:grid;place-items:center;width:44px;height:44px;border:3px solid var(--line);font:400 22px var(--display);color:var(--mute)}
+.cpi.now{border-color:var(--paper)}
+.cpi.now .cpn{background:var(--acc);border-color:var(--acc);color:var(--paper)}
+.cpi.done .cpn{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.cpi.lock{opacity:.5}
 </style>
 </head>
 <body>
@@ -279,6 +299,7 @@ footer{padding-bottom:200px}
         <a href="#scripts" data-tab="scripts">Scripts</a>
         <a href="#premium" data-tab="premium">Premium</a>
         <a href="#getkey" data-tab="getkey">Get key</a>
+        <span id="navUser" style="display:contents"></span>
       </div>
       <a class="btn sm join" id="join" href="#" target="_blank" rel="noopener">Discord</a>
     </nav>
@@ -291,7 +312,6 @@ footer{padding-bottom:200px}
     <div class="hero">
       <div class="bg" aria-hidden="true"><img src="asta.gif" alt="" decoding="async"></div>
       <canvas id="embers" aria-hidden="true"></canvas>
-      <div class="cutter go" aria-hidden="true"></div>
       <div class="wrap">
         <div>
           <h1 id="hl"><span>Never</span><span class="r">give up.</span><span>Script on.</span></h1>
@@ -381,31 +401,84 @@ footer{padding-bottom:200px}
   <section id="getkey" data-page="getkey">
     <div class="wrap page">
       <h2>Get key</h2>
-      <p class="lede">Free access takes three steps. The key lasts until its expiry, then you repeat the checkpoint.</p>
+      <p class="lede">Free access takes three steps. Finish the checkpoint, copy your key, and it works until it expires. Then repeat the checkpoint.</p>
       <ol class="steps">
         <li>
           <div>
             <h3>Complete the checkpoint</h3>
-            <p>Finish the short checkpoint to unlock your key.</p>
-            <div class="btns" style="margin-top:16px"><a class="btn sm" id="keyLink" href="#" target="_blank" rel="noopener">Start checkpoint</a></div>
+            <p>Open each link, wait for the timer to finish, then press Continue.</p>
+            <div id="cp"><p class="meta" style="margin-top:14px">Loading...</p></div>
           </div>
         </li>
         <li>
           <div>
             <h3>Copy your key</h3>
-            <p>The checkpoint ends on a page that shows your key. Copy it exactly, with no spaces.</p>
+            <p>Your key shows up here after the last checkpoint. Copy it exactly, with no spaces.</p>
+            <div id="keyOut"></div>
           </div>
         </li>
         <li>
           <div>
             <h3>Run the script</h3>
             <p>Paste the key into the key box when the script opens. Don't have a loader yet? Copy one from the Scripts tab.</p>
-            <div class="code"><code id="keyEx">script_key = "YOUR-KEY"</code><button class="btn sm" data-copy="script_key = &quot;YOUR-KEY&quot;">Copy</button></div>
+            <div class="code"><code id="keyEx">script_key = "YOUR-KEY"</code><button class="btn sm" id="keyExCopy" data-copy="script_key = &quot;YOUR-KEY&quot;">Copy</button></div>
           </div>
         </li>
       </ol>
     </div>
   </section>
+
+  <!-- LOGIN -->
+  <section id="login" data-page="login">
+    <div class="wrap page narrow">
+      <h2 id="authTitle">Log in</h2>
+      <p class="lede" id="authLede"></p>
+      <div class="chips auth" id="authTabs" role="group" aria-label="Account"><button type="button" data-m="login" aria-pressed="true">Log in</button><button type="button" data-m="register" aria-pressed="false">Create account</button></div>
+      <form id="authForm" class="cust" autocomplete="on">
+        <label>Username<input class="in" name="name" maxlength="20" autocomplete="username" required></label>
+        <label>Password<input class="in" name="pass" type="password" minlength="6" maxlength="64" autocomplete="current-password" required></label>
+        <label id="authConfirm" hidden>Confirm password<input class="in" name="pass2" type="password" minlength="6" maxlength="64" autocomplete="new-password"></label>
+        <p class="hint" id="authHint"></p>
+        <p class="msg" id="authMsg" role="status"></p>
+        <div class="btns"><button class="btn" type="submit" id="authGo">Log in</button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" data-page="dashboard">
+    <div class="wrap page">
+      <div id="dashHead"></div>
+      <div class="tiles" id="dashTiles"></div>
+      <h3 class="sec" style="margin-top:10px">My scripts</h3>
+      <div class="list" id="dashPosts"></div>
+      <h3 class="sec">Customize profile</h3>
+      <form id="profForm" class="cust" autocomplete="off">
+        <div class="grid2">
+          <label>Profile picture<input class="in" name="avatar" type="file" accept="image/*"></label>
+          <label>Banner<input class="in" name="banner" type="file" accept="image/*"></label>
+        </div>
+        <label class="chk"><input type="checkbox" name="rmAvatar"> Remove my picture</label>
+        <label class="chk"><input type="checkbox" name="rmBanner"> Remove my banner</label>
+        <div class="grid2">
+          <label>Display name<input class="in" name="display" maxlength="24"></label>
+          <label>Favorite game<input class="in" name="game" maxlength="40"></label>
+          <label>Discord<input class="in" name="discord" maxlength="40" placeholder="username"></label>
+        </div>
+        <label>Bio<textarea class="in" name="bio" rows="3" maxlength="240"></textarea></label>
+        <div>Accent color</div>
+        <div class="swatches" id="swatches"></div>
+        <p class="msg" id="profMsg" role="status"></p>
+        <div class="btns"><button class="btn" type="submit" id="profSave">Save profile</button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile" data-page="profile">
+    <div class="wrap page pf" id="profBody"></div>
+  </section>
+
   <!-- ADMIN -->
   <section id="admin" data-page="admin">
     <div class="wrap page adm">
@@ -430,10 +503,8 @@ footer{padding-bottom:200px}
       <label>Roblox game<input class="in" name="game" maxlength="60" required></label>
       <label>Place ID<input class="in" name="placeId" inputmode="numeric" pattern="[0-9]{1,15}" maxlength="15" required></label>
       <label>Tags, separated by commas<input class="in" name="tags" maxlength="90" placeholder="esp, aimbot, auto farm"></label>
-      <label>Your name<input class="in" name="author" maxlength="20" required></label>
-      <label>Password<input class="in" name="pass" type="password" minlength="6" maxlength="64" required></label>
     </div>
-    <p class="hint">The Place ID is the number in the game's link: roblox.com/games/PLACE-ID. The first password you use with a name locks that name to you. Use the same pair on every post.</p>
+    <p class="hint">The Place ID is the number in the game's link: roblox.com/games/PLACE-ID. Your post is published under your account name.</p>
     <label>Image<input class="in" name="image" type="file" accept="image/*"></label>
     <label>Description<textarea class="in" name="desc" rows="3" maxlength="600"></textarea></label>
     <label>Script<textarea class="in code" name="code" rows="9" maxlength="20000" required spellcheck="false"></textarea></label>
@@ -443,19 +514,22 @@ footer{padding-bottom:200px}
 </div></dialog>
 <dialog id="viewDlg"><div class="dlg" id="viewBody"></div></dialog>
 
+<div class="ytw" aria-hidden="true"><div id="yt"></div></div>
 <aside class="dock" id="dock" aria-label="Background music">
-  <div id="yt"></div>
-  <div class="ctl">
-    <button type="button" id="snd" aria-pressed="false">Sound on</button>
-    <input type="range" id="vol" min="0" max="100" value="35" aria-label="Volume">
-  </div>
+  <button type="button" id="snd" aria-pressed="false">Sound on</button>
 </aside>
 
 <script>
 /* ---------- edit here ---------- */
 const CONFIG = {
   discord: "https://discord.gg/znwCgvzBgu",
-  keyLink: "https://discord.gg/znwCgvzBgu", // replace with your Linkvertise / Work.ink / Lootlabs checkpoint
+  // One entry per checkpoint step. Put your Linkvertise / Work.ink / Lootlabs links in url.
+  // The server default is 3 steps and a 12 second wait per step (env CHECKPOINT_STEPS, CHECKPOINT_WAIT).
+  checkpoints: [
+    { label: "Join the Discord", url: "https://discord.gg/znwCgvzBgu" },
+    { label: "Checkpoint 2", url: "https://discord.gg/znwCgvzBgu" },
+    { label: "Checkpoint 3", url: "https://discord.gg/znwCgvzBgu" }
+  ],
   buyLink: "https://discord.gg/znwCgvzBgu",
   freePrice: "$0",
   premiumPrice: "$4.99 per month",
@@ -481,14 +555,14 @@ const SLIDES=[
   {lines:["Own","the clock.","Script on."]}
 ];
 (function(){
-  const root=document.documentElement, hl=document.getElementById("hl"), cut=document.querySelector(".cutter"), home=document.getElementById("home");
+  const root=document.documentElement, hl=document.getElementById("hl"), home=document.getElementById("home");
   const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
   let cur=0, first=true;
   function show(i){
     cur=(i+SLIDES.length)%SLIDES.length;
     const x=SLIDES[cur];
     hl.innerHTML=x.lines.map((t,k)=>`<span${k===1?' class="r"':""}>${t}</span>`).join("");
-    if(!first){hl.classList.add("again");cut.classList.remove("go");void cut.offsetWidth;cut.classList.add("go")}
+    if(!first){hl.classList.remove("again");void hl.offsetWidth;hl.classList.add("again")}
     first=false;
   }
   show(0);
@@ -496,7 +570,6 @@ const SLIDES=[
 })();
 
 /* links */
-document.getElementById("keyLink").href = CONFIG.keyLink;
 document.getElementById("buy").href = CONFIG.buyLink;
 document.getElementById("dc").href = CONFIG.discord;
 document.getElementById("join").href = CONFIG.discord;
@@ -515,11 +588,16 @@ const ERR={
   bad_author:"Names use letters, numbers, dot, dash and underscore, 3 to 20 characters.",bad_pass:"Password needs 6 to 64 characters.",
   bad_code:"The script is empty or longer than 20,000 characters.",bad_image:"That image is too big or not supported.",
   wrong_pass:"That name is taken and the password does not match.",too_many_pending:"You already have 5 posts waiting for review.",
-  storage_not_configured:SETUP,admin_not_configured:"Set the ADMIN_PASSWORD environment variable on Vercel first."
+  storage_not_configured:SETUP,admin_not_configured:"Set the ADMIN_PASSWORD environment variable on Vercel first.",
+  wrong_login:"Wrong username or password.",name_taken:"That username is taken.",login_required:"Log in first.",
+  slow_down:"Too many tries. Wait a few minutes and try again.",bad_color:"Pick a valid color."
 };
 const cid=(()=>{try{let v=localStorage.getItem("bc-cid");if(!v){v=(crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Date.now());localStorage.setItem("bc-cid",v)}return v}catch(e){return "anon"+Math.random().toString(36).slice(2)}})();
+let TOKEN="",ME=null;
+try{TOKEN=localStorage.getItem("bc-token")||""}catch(e){}
 async function api(a,body,key){
   const o={method:body?"POST":"GET",headers:{}};
+  if(TOKEN) o.headers["x-token"]=TOKEN;
   if(body){o.headers["Content-Type"]="application/json";o.body=JSON.stringify(body)}
   if(key) o.headers["x-admin"]=key;
   const r=await fetch(`${API}?a=${a}`,o);
@@ -546,7 +624,7 @@ function card(x){
     ${x.hasImg?`<img class="th" loading="lazy" alt="" src="${API}?a=img&id=${esc(x.id)}">`:`<div class="th none" aria-hidden="true">${esc(x.game.slice(0,2))}</div>`}
     <div>
       <h3>${esc(x.title)}</h3>
-      <div class="meta">${esc(x.author)}${x.verified?VER:""} on ${esc(x.game)}, place ${esc(x.placeId)}</div>
+      <div class="meta"><a href="#u/${encodeURIComponent(x.author)}">${esc(x.author)}</a>${x.verified?VER:""} on ${esc(x.game)}, place ${esc(x.placeId)}</div>
       <div class="feat">${x.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
       <div class="stat">${fmt(x.views)} views, ${fmt(x.likes)} likes</div>
     </div>
@@ -572,7 +650,11 @@ document.getElementById("chips").addEventListener("click",e=>{
 
 const postDlg=document.getElementById("postDlg"),viewDlg=document.getElementById("viewDlg"),postForm=document.getElementById("postForm"),postMsg=document.getElementById("postMsg");
 document.querySelectorAll("dialog").forEach(d=>d.addEventListener("click",e=>{if(e.target===d)d.close()}));
-document.getElementById("postBtn").addEventListener("click",()=>{postMsg.textContent="";postDlg.showModal()});
+function openPostForm(){
+  if(!ME){authNote="Log in or create an account to post a script.";location.hash="#login";return}
+  postMsg.textContent="";postDlg.showModal();
+}
+document.getElementById("postBtn").addEventListener("click",openPostForm);
 postForm.addEventListener("submit",async e=>{
   e.preventDefault();
   const f=new FormData(postForm),btn=postForm.querySelector("[type=submit]");
@@ -580,17 +662,20 @@ postForm.addEventListener("submit",async e=>{
   try{
     let image="";const file=f.get("image");
     if(file&&file.size) image=await toJpeg(file);
-    const r=await api("post",{title:f.get("title"),game:f.get("game"),placeId:f.get("placeId"),tags:f.get("tags"),author:f.get("author"),pass:f.get("pass"),desc:f.get("desc"),code:f.get("code"),image});
+    const r=await api("post",{title:f.get("title"),game:f.get("game"),placeId:f.get("placeId"),tags:f.get("tags"),desc:f.get("desc"),code:f.get("code"),image});
     postMsg.textContent=r.status==="approved"?"Posted. It is live now.":"Sent. It goes live after review.";
-    postForm.reset();load();setTimeout(()=>postDlg.close(),1500);
-  }catch(err){postMsg.textContent=ERR[err.code]||"Could not post. Try again."}
+    postForm.reset();load();if(CUR==="dashboard")loadDash();setTimeout(()=>postDlg.close(),1500);
+  }catch(err){
+    if(err.status===401){setAuth("",null);authNote="Your session expired. Log in again.";postDlg.close();location.hash="#login"}
+    else postMsg.textContent=ERR[err.code]||"Could not post. Try again.";
+  }
   btn.disabled=false;
 });
 
 function postHtml(x,liked){
   return `${x.hasImg?`<img class="big" alt="" src="${API}?a=img&id=${esc(x.id)}">`:""}
     <h3>${esc(x.title)}</h3>
-    <div class="meta">${esc(x.author)}${x.verified?VER:""} on ${esc(x.game)}, <a href="https://www.roblox.com/games/${encodeURIComponent(x.placeId)}" target="_blank" rel="noopener">place ${esc(x.placeId)}</a></div>
+    <div class="meta"><a href="#u/${encodeURIComponent(x.author)}">${esc(x.author)}</a>${x.verified?VER:""} on ${esc(x.game)}, <a href="https://www.roblox.com/games/${encodeURIComponent(x.placeId)}" target="_blank" rel="noopener">place ${esc(x.placeId)}</a></div>
     <div class="feat">${x.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
     ${x.desc?`<p class="desc">${esc(x.desc)}</p>`:""}
     <pre class="src" id="srcBox">${esc(x.code)}</pre>
@@ -735,61 +820,282 @@ document.addEventListener("click",e=>{
   requestAnimationFrame(tick);
 })();
 
-/* background sound: YouTube player, starts on the first click or key press (browsers block sound before that) */
+/* background sound: one toggle. Audio only, starts on the first click or key press (browsers block sound before that) */
 (function(){
-  const ID="XMeQeIG_rQg";
-  const btn=document.getElementById("snd"), vol=document.getElementById("vol");
-  let pl=null, ready=false, want=true, started=false;
+  const ID="XMeQeIG_rQg", VOL=35;
+  const btn=document.getElementById("snd");
+  let pl=null, ready=false, want=true;
   try{ if(localStorage.getItem("bc-sound")==="off") want=false }catch(e){}
-  try{ const v=localStorage.getItem("bc-vol"); if(v!==null) vol.value=v }catch(e){}
   function label(on){btn.textContent=on?"Sound off":"Sound on";btn.setAttribute("aria-pressed",on?"true":"false")}
-  function start(){ if(!ready) return; pl.unMute(); pl.setVolume(+vol.value); pl.playVideo() }
+  function start(){ if(!ready) return; pl.unMute(); pl.setVolume(VOL); pl.playVideo() }
   function gesture(e){
     if(e.target.closest&&e.target.closest("#dock")) return;
     if(!want) return cleanup();
     if(!ready) return;
     start(); cleanup();
   }
-  function cleanup(){ started=true; removeEventListener("pointerdown",gesture); removeEventListener("keydown",gesture) }
+  function cleanup(){ removeEventListener("pointerdown",gesture); removeEventListener("keydown",gesture) }
   addEventListener("pointerdown",gesture); addEventListener("keydown",gesture);
   window.onYouTubeIframeAPIReady=function(){
     pl=new YT.Player("yt",{
-      width:"100%",height:"129",videoId:ID,
+      width:"200",height:"200",videoId:ID,
       playerVars:{playsinline:1,loop:1,playlist:ID,rel:0,controls:0,disablekb:1,modestbranding:1},
       events:{
-        onReady(){ ready=true; pl.setVolume(+vol.value); if(want) pl.playVideo() },
+        onReady(){ ready=true; pl.setVolume(VOL); if(want) pl.playVideo() },
         onStateChange(e){ label(e.data===1) }
       }
     });
   };
   btn.addEventListener("click",()=>{
     if(!ready) return;
-    const playing=pl.getPlayerState()===1;
-    if(playing){ pl.pauseVideo(); want=false; try{localStorage.setItem("bc-sound","off")}catch(e){} }
+    if(pl.getPlayerState()===1){ pl.pauseVideo(); want=false; try{localStorage.setItem("bc-sound","off")}catch(e){} }
     else { want=true; start(); try{localStorage.setItem("bc-sound","on")}catch(e){} }
     cleanup();
   });
-  vol.addEventListener("input",()=>{ if(ready) pl.setVolume(+vol.value); try{localStorage.setItem("bc-vol",vol.value)}catch(e){} });
   const t=document.createElement("script"); t.src="https://www.youtube.com/iframe_api"; t.async=true; document.head.appendChild(t);
 })();
 
+/* ---------- accounts, dashboard, profile ---------- */
+const $=id=>document.getElementById(id);
+const ACCENTS=["","#e0a93b","#3a9bff","#34c38f","#a855f7","#ff5fa2","#f3f1ec"];
+let CUR="home",authMode="login",authNote="",accSel="";
+const dateOf=ms=>new Date(ms).toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
+function avatar(u,cls){
+  if(u.av) return `<img class="av ${cls||""}" alt="" src="${API}?a=avatar&u=${encodeURIComponent(u.name.toLowerCase())}&v=${u.av}">`;
+  return `<span class="av none ${cls||""}" aria-hidden="true">${esc(u.name.slice(0,1).toUpperCase())}</span>`;
+}
+function setAuth(token,me){
+  TOKEN=token||"";ME=me||null;
+  try{TOKEN?localStorage.setItem("bc-token",TOKEN):localStorage.removeItem("bc-token")}catch(e){}
+  renderNav();
+}
+function markTabs(){
+  document.querySelectorAll("[data-tab]").forEach(t=>t.dataset.tab===CUR?t.setAttribute("aria-current","page"):t.removeAttribute("aria-current"));
+}
+function renderNav(){
+  $("navUser").innerHTML=ME
+    ?`<a href="#dashboard" data-tab="dashboard">Dashboard</a><a href="#u/${encodeURIComponent(ME.name)}" data-tab="profile">Profile</a>`
+    :`<a href="#login" data-tab="login">Login</a>`;
+  markTabs();
+}
+function cropJpeg(file,w,h,q){
+  return new Promise((ok,no)=>{
+    const img=new Image(),u=URL.createObjectURL(file);
+    img.onload=()=>{
+      const c=document.createElement("canvas");c.width=w;c.height=h;
+      const x=c.getContext("2d"),k=Math.max(w/img.width,h/img.height),dw=img.width*k,dh=img.height*k;
+      x.fillStyle="#000";x.fillRect(0,0,w,h);x.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);
+      URL.revokeObjectURL(u);ok(c.toDataURL("image/jpeg",q));
+    };
+    img.onerror=()=>{URL.revokeObjectURL(u);no(Object.assign(new Error("bad_image"),{code:"bad_image"}))};
+    img.src=u;
+  });
+}
+function expired(){setAuth("",null);authNote="Your session expired. Log in again.";location.hash="#login"}
+
+/* login / create account */
+function renderAuth(){
+  if(ME){location.hash="#dashboard";return}
+  const reg=authMode==="register",f=$("authForm").elements;
+  $("authTitle").textContent=reg?"Create account":"Log in";
+  $("authLede").textContent=reg?"Pick a username and a password. You can post scripts and customize your profile right away.":"Log in to post scripts, open your dashboard and edit your profile.";
+  [...$("authTabs").children].forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===authMode));
+  $("authConfirm").hidden=!reg;f.pass2.required=reg;
+  f.pass.autocomplete=reg?"new-password":"current-password";
+  $("authGo").textContent=reg?"Create account":"Log in";
+  $("authHint").textContent=reg?"Usernames use letters, numbers, dot, dash and underscore, 3 to 20 characters. Passwords need 6 or more.":"Posted a script before accounts existed? Log in with the same name and password you used then.";
+  $("authMsg").textContent=authNote;authNote="";
+}
+$("authTabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;authMode=b.dataset.m;renderAuth()});
+$("authForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const f=$("authForm").elements,msg=$("authMsg"),btn=$("authGo");
+  if(authMode==="register"&&f.pass.value!==f.pass2.value){msg.textContent="Passwords do not match.";return}
+  msg.textContent="One moment...";btn.disabled=true;
+  try{
+    const r=await api(authMode,{name:f.name.value,pass:f.pass.value});
+    $("authForm").reset();setAuth(r.token,r.me);location.hash="#dashboard";
+  }catch(err){msg.textContent=ERR[err.code]||"Could not reach the server. Try again."}
+  btn.disabled=false;
+});
+
+/* dashboard */
+function drawSwatches(){
+  $("swatches").innerHTML=ACCENTS.map(c=>`<button type="button" data-acc="${c}" aria-pressed="${c===accSel}" aria-label="${c||"Default red"}" style="background:${c||"#d1121b"}"></button>`).join("")
+    +`<input type="color" id="accPick" value="${accSel||"#d1121b"}" aria-label="Custom color">`;
+  accSel?$("dashboard").style.setProperty("--acc",accSel):$("dashboard").style.removeProperty("--acc");
+}
+$("swatches").addEventListener("input",e=>{
+  if(e.target.id!=="accPick")return;
+  accSel=e.target.value;$("dashboard").style.setProperty("--acc",accSel);
+  $("swatches").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed","false"));
+});
+async function loadDash(){
+  if(!TOKEN){authNote="Log in to open your dashboard.";location.hash="#login";return}
+  $("dashHead").innerHTML=`<p class="meta">Loading...</p>`;
+  try{const r=await api("mine");ME=r.me;renderNav();renderDash(r)}
+  catch(e){
+    if(e.status===401) expired();
+    else $("dashHead").innerHTML=`<div class="empty">${esc(ERR[e.code]||"Could not reach the server.")}</div>`;
+  }
+}
+function renderDash(r){
+  const m=r.me,t=r.totals;
+  $("dashHead").innerHTML=`<div class="dhead">${avatar(m)}<div><h2>${esc(m.display||m.name)}${m.verified?VER:""}</h2><div class="meta">@${esc(m.name)}</div></div></div>
+    <div class="btns" style="margin-top:20px"><button type="button" class="btn sm" data-postopen>Post script</button><a class="btn ghost sm" href="#u/${encodeURIComponent(m.name)}">View profile</a><button type="button" class="btn ghost sm" data-logout>Log out</button></div>`;
+  $("dashTiles").innerHTML=[["Scripts live",t.posts],["Views",fmt(t.views)],["Likes",fmt(t.likes)],["In review",t.pending]].map(([k,v])=>`<div class="tile"><b>${v}</b><span>${k}</span></div>`).join("");
+  const cls={approved:"",rejected:"down",pending:"pro"},lab={approved:"Live",rejected:"Rejected",pending:"In review"};
+  $("dashPosts").innerHTML=r.posts.length?r.posts.map(x=>`<article class="script"><div><h3>${esc(x.title)}<span class="st ${cls[x.status]||""}">${esc(lab[x.status]||x.status)}</span></h3><div class="meta">${esc(x.game)}, place ${esc(x.placeId)}</div><div class="stat">${fmt(x.views)} views, ${fmt(x.likes)} likes</div></div><div class="btns">${x.status==="approved"?`<button type="button" class="btn ghost sm" data-open="${esc(x.id)}">Open</button>`:""}<button type="button" class="btn ghost sm" data-mydel="${esc(x.id)}">Delete</button></div></article>`).join("")
+    :`<div class="empty">You have not posted anything yet.</div>`;
+  const f=$("profForm").elements;
+  f.display.value=m.display;f.bio.value=m.bio;f.discord.value=m.discord;f.game.value=m.game;
+  f.avatar.value="";f.banner.value="";f.rmAvatar.checked=false;f.rmBanner.checked=false;
+  accSel=m.accent||"";drawSwatches();
+}
+$("profForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const f=$("profForm").elements,msg=$("profMsg"),btn=$("profSave");
+  msg.textContent="Saving...";btn.disabled=true;
+  try{
+    const body={display:f.display.value,bio:f.bio.value,discord:f.discord.value,game:f.game.value,accent:accSel,removeAvatar:f.rmAvatar.checked,removeBanner:f.rmBanner.checked};
+    if(f.avatar.files[0]) body.avatar=await cropJpeg(f.avatar.files[0],160,160,.82);
+    if(f.banner.files[0]) body.banner=await cropJpeg(f.banner.files[0],900,300,.7);
+    const r=await api("profile_set",body);
+    ME=r.me;renderNav();msg.textContent="Saved.";loadDash();
+  }catch(err){
+    if(err.status===401) expired();
+    else msg.textContent=ERR[err.code]||"Could not save. Try again.";
+  }
+  btn.disabled=false;
+});
+
+/* public profile */
+async function loadProfile(name){
+  const box=$("profBody"),sec=$("profile");
+  sec.style.removeProperty("--acc");
+  box.innerHTML=`<p class="meta">Loading...</p>`;
+  try{
+    const r=await api("profile&u="+encodeURIComponent(name));
+    const u=r.user,t=r.totals,own=!!ME&&ME.name.toLowerCase()===u.name.toLowerCase(),un=encodeURIComponent(u.name.toLowerCase());
+    if(u.accent) sec.style.setProperty("--acc",u.accent);
+    document.title=`${u.display||u.name} | BlackClover`;
+    box.innerHTML=`<div class="pbanner">${u.bn?`<img alt="" src="${API}?a=banner&u=${un}&v=${u.bn}">`:""}</div>
+      <div class="phead">${avatar(u)}<div><h2>${esc(u.display||u.name)}${u.verified?VER:""}</h2><div class="meta">@${esc(u.name)}, joined ${esc(dateOf(u.joined))}</div></div></div>
+      ${u.bio?`<p class="desc">${esc(u.bio)}</p>`:""}
+      <div class="feat">${u.game?`<span>Plays ${esc(u.game)}</span>`:""}${u.discord?`<span>Discord: ${esc(u.discord)}</span>`:""}</div>
+      <div class="tiles" style="grid-template-columns:repeat(3,1fr)"><div class="tile"><b>${t.posts}</b><span>Scripts</span></div><div class="tile"><b>${fmt(t.views)}</b><span>Views</span></div><div class="tile"><b>${fmt(t.likes)}</b><span>Likes</span></div></div>
+      ${own?`<div class="btns"><a class="btn sm" href="#dashboard">Dashboard and edit profile</a></div>`:""}
+      <h3 class="sec">Scripts</h3>
+      <div class="list">${r.posts.length?r.posts.map(card).join(""):`<div class="empty">No scripts yet.</div>`}</div>`;
+  }catch(e){box.innerHTML=`<div class="empty">${e.code==="not_found"?"That profile does not exist.":esc(ERR[e.code]||"Could not reach the server.")}</div>`}
+}
+
+/* key checkpoint */
+const CP={st:null,timer:0,err:""};
+const CPERR={too_fast:"The timer is not done yet.",not_opened:"Open the checkpoint link first.",key_limit:"Key limit reached on this network today. Try again tomorrow."};
+async function loadCp(){
+  CP.err="";
+  try{CP.st=await api("cp_state",{cid})}catch(e){CP.st=null;CP.err=ERR[e.code]||"Could not reach the server."}
+  drawCp();cpTick();
+}
+function cpTick(){
+  clearInterval(CP.timer);
+  if(!CP.st||!CP.st.opened||CP.st.left<=0||CP.st.key) return;
+  CP.timer=setInterval(()=>{
+    CP.st.left=Math.max(0,CP.st.left-1);drawCp();
+    if(CP.st.left<=0) clearInterval(CP.timer);
+  },1000);
+}
+function drawCp(){
+  const el=$("cp"),s=CP.st;
+  if(!s){el.innerHTML=`<div class="empty" style="margin-top:14px">${esc(CP.err)}</div>`;drawKey();return}
+  const items=Array.from({length:s.total},(_,i)=>{
+    const c=(CONFIG.checkpoints||[])[i]||{label:"Checkpoint "+(i+1)};
+    const state=s.key||i<s.step?"done":i===s.step?"now":"lock";
+    let act="";
+    if(state==="now") act=!s.opened
+      ?`<button type="button" class="btn sm" data-cp="open">Open checkpoint</button>`
+      :(s.left>0?`<button type="button" class="btn sm" disabled>Continue in ${s.left}s</button>`:`<button type="button" class="btn sm" data-cp="next">Continue</button>`)+`<button type="button" class="btn ghost sm" data-cp="reopen">Open again</button>`;
+    return `<div class="cpi ${state}"><span class="cpn">${state==="done"?"&#10003;":i+1}</span><div><strong>${esc(c.label)}</strong>${act?`<div class="btns" style="margin-top:10px">${act}</div>`:""}</div></div>`;
+  }).join("");
+  el.innerHTML=`<div class="cplist">${items}</div><p class="msg" role="status" style="margin:12px 0 0">${esc(CP.err)}</p>`;
+  drawKey();
+}
+function drawKey(){
+  const s=CP.st,out=$("keyOut"),ex=$("keyEx"),cb=$("keyExCopy");
+  if(s&&s.key){
+    out.innerHTML=`<div class="code"><code>${esc(s.key)}</code><button type="button" class="btn sm" data-copy="${esc(s.key)}">Copy</button></div><p class="meta" style="margin-top:10px">Valid until ${esc(new Date(s.exp).toLocaleString())}.</p>`;
+    ex.textContent=`script_key = "${s.key}"`;
+  }else{
+    out.innerHTML=`<p class="meta">Finish the checkpoint to reveal your key.</p>`;
+    ex.textContent='script_key = "YOUR-KEY"';
+  }
+  cb.dataset.copy=ex.textContent;
+}
+document.addEventListener("click",async e=>{
+  const b=e.target.closest("[data-cp]");
+  if(!b||!CP.st) return;
+  const act=b.dataset.cp,c=(CONFIG.checkpoints||[])[CP.st.step];
+  if((act==="open"||act==="reopen")&&c&&c.url) window.open(c.url,"_blank","noopener");
+  if(act==="reopen") return;
+  try{
+    CP.err="";
+    CP.st=await api(act==="open"?"cp_open":"cp_next",{cid});
+  }catch(err){
+    CP.err=CPERR[err.code]||ERR[err.code]||"That did not work. Try again.";
+    if(err.code==="too_fast") loadCp();
+  }
+  drawCp();cpTick();
+});
+
+/* clicks for accounts */
+document.addEventListener("click",async e=>{
+  const t=e.target;
+  const lk=t.closest("dialog a[href^='#u/']");
+  if(lk) lk.closest("dialog").close();
+  if(t.closest("[data-postopen]")) return openPostForm();
+  if(t.closest("[data-logout]")){try{await api("logout",{})}catch(_){}setAuth("",null);location.hash="#home";return}
+  const d=t.closest("[data-mydel]");
+  if(d){
+    if(!confirm("Delete this script for good?")) return;
+    try{await api("mydel",{id:d.dataset.mydel});loadDash()}catch(err){alert(ERR[err.code]||"That did not work. Try again.")}
+    return;
+  }
+  const sw=t.closest("[data-acc]");
+  if(sw){accSel=sw.dataset.acc;drawSwatches()}
+});
+addEventListener("hashchange",()=>document.querySelectorAll("dialog[open]").forEach(d=>d.close()));
+
 /* tab routing on #hash */
 const pages=[...document.querySelectorAll("[data-page]")];
-const tabs=[...document.querySelectorAll("[data-tab]")];
 const names=pages.map(p=>p.dataset.page);
 function route(){
-  const h=location.hash.slice(1);
-  const name=names.includes(h)?h:"home";
+  const raw=location.hash.slice(1);
+  let name=raw,arg="";
+  if(raw.startsWith("u/")){name="profile";try{arg=decodeURIComponent(raw.slice(2))}catch(e){arg=raw.slice(2)}}
+  if(!names.includes(name)) name="home";
+  CUR=name==="profile"&&!(ME&&arg.toLowerCase()===ME.name.toLowerCase())?"":name;
   pages.forEach(p=>p.classList.toggle("on",p.dataset.page===name));
-  tabs.forEach(t=>t.dataset.tab===name?t.setAttribute("aria-current","page"):t.removeAttribute("aria-current"));
-  const titles={home:"BlackClover | Anti-magic scripts",scripts:"Scripts | BlackClover",premium:"Premium | BlackClover",getkey:"Get key | BlackClover",admin:"Admin | BlackClover"};
+  markTabs();
+  const titles={home:"BlackClover | Anti-magic scripts",scripts:"Scripts | BlackClover",premium:"Premium | BlackClover",getkey:"Get key | BlackClover",admin:"Admin | BlackClover",login:"Account | BlackClover",dashboard:"Dashboard | BlackClover",profile:"Profile | BlackClover"};
   document.title=titles[name];
   window.scrollTo(0,0);
+  clearInterval(CP.timer);
   if(name==="scripts") load();
   if(name==="admin") loadAdmin();
+  if(name==="getkey") loadCp();
+  if(name==="login") renderAuth();
+  if(name==="dashboard") loadDash();
+  if(name==="profile") loadProfile(arg);
 }
 window.addEventListener("hashchange",route);
-route();
+async function boot(){
+  if(TOKEN){
+    try{ME=(await api("me")).me}catch(e){if(e.status===401)setAuth("",null)}
+  }
+  renderNav();route();
+}
+boot();
 </script>
 </body>
 </html>
